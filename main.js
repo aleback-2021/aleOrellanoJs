@@ -16,5 +16,5 @@ while(x<=cantProd){
     total+=precio;
     x=x+1;
 }
-alert(total);
+alert("El total por los productos ingresados es"+total);
 
