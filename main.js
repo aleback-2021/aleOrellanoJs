@@ -1,43 +1,44 @@
+//var valor= new Array();
 
+const valor =[];
+class producto {
+    constructor(nomProd, precio, iva, precioTot) {
 
+        this.nomProd = nomProd;
+        this.precio = precio;
+        this.iva = iva;
+        this.precioTot = precioTot;
 
-// let x=1
-// cantProd=parseInt(cantProd);
-// // while(x<=cantProd){
-//     let resultadoNombre= alert("Hola "+nombre+" cantidad de productos a sumar.");
-//     let cantProd =
-//     let precio;
-//     precio=prompt("ingresar precio producto numero:"+x);
-//     precio=parseInt(precio);
-//     total+=precio;
-//     x=x+1;
-// }
-// alert("El total por los productos ingresados es"+total);
-var valor= new Array();
+    }
+}
 function calcularPrecio(resultadoNombr,precio,iva,cantProd){
-    var nombre =prompt("Ingresar Nombre");
-    resultadoNombr=alert("Hola "+nombre+" ingresa la cantidad de productos a sumar.");    
+    
     let total=0;
-    cantProd=prompt("Ingresar cantidad de productos");
+   
     let x=1
     cantProd=parseInt(cantProd);
+    resultadoNombr=prompt("Ingresar nombre");
+    cantProd=prompt("Ingresar cantidad de productos");
+    alert("Hola "+resultadoNombr+" vas a ingresar "+cantProd+" productos");
     while(x<=cantProd){
 
-        precio=prompt("ingresar precio producto numero:"+x);
-        iva=prompt("Ingregar % de iva producto numer"+x)
-        iva=parseInt(iva);
-        precio=parseInt(precio);
+        let product= new producto(prompt("Ingresar nombre del producto"+x),prompt("ingresar precio producto numero:"+x),prompt("Ingregar % de iva producto numer"+x),0)
+        
+        
+        iva=parseInt(product.iva);
+        precio=parseInt(product.precio);
+        
         precio=precio+(precio*(iva/100));
-        alert("el precio con iva es: "+precio);
-        //total+=precio;
+        alert("El producto "+product.nomProd+" tiene un precio con iva de: "+precio+" y sin iva de: "+product.precio);
+        product.precioTot=precio;
         x=x+1;
         
-        valor.push(precio);
+        valor.push(product);
         
     }
-    for(i=0;i<valor.length;i++){
+    for(prod of valor){
     
-        alert("El total por los productos ingresados con iva  es "+valor[i]+ "para el producto N° "+[i]);      
+        console.log("Nombre producto: " +prod.nomProd+ " con iva: " + prod.iva + "% .Precio unitario: $" +prod.precio+ " precio total: $" + prod.precioTot);      
         
     }
     
