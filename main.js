@@ -1,4 +1,4 @@
-//var valor= new Array();
+
 
 const valor =[];
 class producto {
@@ -13,7 +13,7 @@ class producto {
 }
 function calcularPrecio(resultadoNombr,precio,iva,cantProd){
     
-    let total=0;
+    
    
     let x=1
     cantProd=parseInt(cantProd);
@@ -36,12 +36,15 @@ function calcularPrecio(resultadoNombr,precio,iva,cantProd){
         valor.push(product);
         
     }
+    
     for(prod of valor){
     
         console.log("Nombre producto: " +prod.nomProd+ " con iva: " + prod.iva + "% .Precio unitario: $" +prod.precio+ " precio total: $" + prod.precioTot);      
-        
-    }
+       
     
+    }
+    const mayorprecio=valor.filter(pre=>pre.precioTot < 100);
+    console.log(mayorprecio);
 }   
 
 calcularPrecio();
