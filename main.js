@@ -11,6 +11,7 @@ class producto {
 
     }
 }
+
 function calcularPrecio(resultadoNombr,precio,iva,cantProd){
     
     
@@ -36,15 +37,39 @@ function calcularPrecio(resultadoNombr,precio,iva,cantProd){
         valor.push(product);
         
     }
+    let cliente = document.createElement("h3")
+    cliente.innerHTML="Cliente:"+resultadoNombr;
+    document.getElementById("client").appendChild(cliente);
+
     
     for(prod of valor){
+        
+        let contenedor = document.createElement("div");
+        contenedor.innerHTML = `<h3> Producto: ${prod.nomProd}</h3>
+                            <p> Precio: $ ${prod.precio} Iva: % ${prod.iva}</p>
+                            <b>Precio c/ iva: $ ${prod.precioTot}</b>
+                            <hr>`;
     
+        document.getElementById("resultado").appendChild(contenedor);
         console.log("Nombre producto: " +prod.nomProd+ " con iva: " + prod.iva + "% .Precio unitario: $" +prod.precio+ " precio total: $" + prod.precioTot);      
-       
-    
+        
     }
-    const mayorprecio=valor.filter(pre=>pre.precioTot < 100);
-    console.log(mayorprecio);
+
+    const menoraCien=valor.filter(pre=>pre.precioTot < 100);
+    console.log(menoraCien);
+    
+
+    let totalart=0;
+    for(pr of valor){
+
+        
+         totalart+=pr.precioTot;
+         console.log(pr.precioTot);
+        
+    }
+    let total = document.createElement("h4")
+        total.innerHTML="Total: "+totalart;
+    document.getElementById("totRt").appendChild(total);
 }   
 
 calcularPrecio();
