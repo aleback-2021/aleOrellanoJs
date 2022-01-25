@@ -1,47 +1,54 @@
-
+console.dir(document);
+console.dir(document.head);
+console.dir(document.body);
 
 const valor =[];
 class producto {
-    constructor(nomProd, precio, iva, precioTot) {
+    constructor(nomProd, precio, iva, precioTot,cantiProd) {
 
         this.nomProd = nomProd;
         this.precio = precio;
-        this.iva = iva;
+        this.iva = iva;        
+        this.cantiProd=cantiProd;
         this.precioTot = precioTot;
-
     }
 }
-
+let totalart=0;
 function calcularPrecio(resultadoNombr,precio,iva,cantProd){
     
     
    
-    let x=1
-    cantProd=parseInt(cantProd);
+    resultadoNombr=document.getElementById("nombre");
+    precio=document.getElementById("precio");
+    cantProd=document.getElementById("cantidad");
+    iva=document.getElementById("iva");
+    /*cantProd=parseInt(cantProd);
     resultadoNombr=prompt("Ingresar nombre");
     cantProd=prompt("Ingresar cantidad de productos");
-    alert("Hola "+resultadoNombr+" vas a ingresar "+cantProd+" productos");
-    while(x<=cantProd){
+    alert("Hola "+resultadoNombr+" vas a ingresar "+cantProd+" productos");*/
+    
 
-        let product= new producto(prompt("Ingresar nombre del producto"+x),prompt("ingresar precio producto numero:"+x),prompt("Ingregar % de iva producto numer"+x),0)
+        let product= new producto(resultadoNombr.value,precio.value,iva.value,cantProd.value);
         
         
         iva=parseInt(product.iva);
-        precio=parseInt(product.precio);
-        
+        precio=parseInt(product.precio);        
         precio=precio+(precio*(iva/100));
+    
         alert("El producto "+product.nomProd+" tiene un precio con iva de: "+precio+" y sin iva de: "+product.precio);
-        product.precioTot=precio;
-        x=x+1;
+        let totPr=parseInt(precio*can);
+        product.precioTot=totPr;       
         
         valor.push(product);
         
-    }
-    let cliente = document.createElement("h3")
-    cliente.innerHTML="Cliente:"+resultadoNombr;
-    document.getElementById("client").appendChild(cliente);
-
     
+    let cliente = document.createElement("h3")
+   // cliente.innerHTML="Cliente:"+resultadoNombr;
+   // document.getElementById("client").appendChild(cliente);
+
+}
+function totalProductos(){    
+   
     for(prod of valor){
         
         let contenedor = document.createElement("div");
@@ -59,7 +66,7 @@ function calcularPrecio(resultadoNombr,precio,iva,cantProd){
     console.log(menoraCien);
     
 
-    let totalart=0;
+   
     for(pr of valor){
 
         
@@ -68,8 +75,16 @@ function calcularPrecio(resultadoNombr,precio,iva,cantProd){
         
     }
     let total = document.createElement("h4")
-        total.innerHTML="Total: "+totalart;
+        total.innerHTML="Total: "+parseFloat(totalart);
     document.getElementById("totRt").appendChild(total);
-}   
+  
+/*function totalProd(){
 
-calcularPrecio();
+}*/
+
+}
+let agregarProd=document.getElementById("btnPrincipal");
+agregarProd.addEventListener("click", calcularPrecio);
+let calcularTotal=document.getElementById("btnTotal");
+calcularTotal.addEventListener("click",totalProductos);
+//calcularPrecio();

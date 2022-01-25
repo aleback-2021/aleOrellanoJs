@@ -13,7 +13,29 @@
     <h3 id="client"></h3>
     <div id="resultado" ></div>
     <h4 id="totRt"></h4>
+
+    <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombre">
+        <div id="nombreError" class="form-text"></div>
+    </div>
+    <div class="mb-3">
+        <label for="cantidad" class="form-label">Cantidad</label>
+        <input type="number" class="form-control" id="cantidad">
+    </div>
+    <div class="mb-3">
+        <label for="precio" class="form-label">Precio</label>
+        <input type="number" class="form-control" id="precio">
+        <label for="precio" class="form-label">Iva</label>
+        <input type="number" class="form-control" id="iva">
+    </div>
+    <button type="button" id="btnPrincipal" class="btn btn-primary">Agregar</button>
+    <button type="reset" id="btnReiniciar" class="btn btn-secondary">Borrar</button>
+    <div class="mb-3">
+        <button type="button" id="btnTotal" class="btn btn-primary">Calcular Total</button>
+    </div>
 </body>
+
 
 <script src="main.js"></script>
 </html>
