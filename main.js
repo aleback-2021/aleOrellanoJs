@@ -1,6 +1,15 @@
+/*$(document).ready(function() {
+    console.log("El DOM esta listo (jQuery)");
+    let mensaje = "Curso de <strong>Javascript</strong>";
+    $("#resultado").html(mensaje);
+ }); 
+*/
+
+ 
 console.dir(document);
 console.dir(document.head);
 console.dir(document.body);
+
 
 const valor =[];
 class producto {
@@ -15,7 +24,7 @@ class producto {
 }
 let totalart=0;
 let contadorProd;
-function calcularPrecio(resultadoNombr,precio,iva,cantProd){
+/*function calcularPrecio(resultadoNombr,precio,iva,cantProd){
     
     
    
@@ -39,7 +48,37 @@ function calcularPrecio(resultadoNombr,precio,iva,cantProd){
         valor.push(product);
         localStorage.setItem("prodCompleto",JSON.stringify(product));       
     
-}
+}*/
+
+
+
+$('body').append('<button id:"bntAgregar">Agregar</button>');
+
+$('#bntAgregar').on('click',function name(resultadoNombr,precio,iva,cantProd){
+    
+    
+   
+    resultadoNombr=document.getElementById("nombre");
+    precio=document.getElementById("precio");
+    cantProd=document.getElementById("cantidad");
+    iva=document.getElementById("iva");
+    
+
+        let product= new producto(resultadoNombr.value,precio.value,iva.value,cantProd.value);
+        
+        
+        iva=parseInt(product.iva);
+        precio=parseInt(product.precio);        
+        precio=precio+(precio*(iva/100));
+        let cant=parseInt(cantProd.value)
+        alert("El producto "+product.nomProd+" tiene un precio con iva de: "+precio+" y sin iva de: "+product.precio);
+        let totPr=parseInt(precio)*(cant);
+        product.precioTot=totPr;       
+        localStorage.setItem("productos",cantProd);
+        valor.push(product);
+        localStorage.setItem("prodCompleto",JSON.stringify(product));       
+    
+});
 
 function totalProductos(){    
    
@@ -66,10 +105,14 @@ function totalProductos(){
     document.getElementById("totRt").appendChild(total); 
 }
 
-let agregarProd=document.getElementById("btnPrincipal");
-agregarProd.addEventListener("click", calcularPrecio);
-let calcularTotal=document.getElementById("btnTotal");
-calcularTotal.addEventListener("click",totalProductos);
+
+$('body').append('<button id="btnBorrar">Borrar</button>');
+$('btnBorrar').on('click',function () {
+    console.log("porque no muestra otra cosa");
+    
+});
+
+
 console.log(localStorage.getItem("prodCompleto"));
 
 
