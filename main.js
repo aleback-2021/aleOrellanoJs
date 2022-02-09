@@ -1,9 +1,9 @@
-/*$(document).ready(function() {
+$(document).ready(function() {
     console.log("El DOM esta listo (jQuery)");
     let mensaje = "Curso de <strong>Javascript</strong>";
     $("#resultado").html(mensaje);
  }); 
-*/
+
 
  
 console.dir(document);
@@ -46,28 +46,22 @@ function calcularPrecio(resultadoNombr,precio,iva,cantProd){
         product.precioTot=totPr;       
         localStorage.setItem("productos",cantProd);
         valor.push(product);
-        localStorage.setItem("prodCompleto",JSON.stringify(product));       
+        localStorage.setItem("prodCompleto",JSON.stringify(product));    
+           
     
 }
-
-
-
-$('body').append('<button id:"bntAgregar">Agregar</button>');
-
-$("#bntAgregar").click(function() {
-    calcularPrecio();
-})
-
 function totalProductos(){    
    
     for(prod of valor){
         
-        let contenedor = document.createElement("div");
-        contenedor.innerHTML = `<h3> Producto: ${prod.nomProd}</h3>
-                            <p> Precio: $ ${prod.precio} Iva: % ${prod.iva}</p>
-                            <b>Precio c/ iva: $ ${prod.precioTot}</b>
-                            <hr>`;    
-        document.getElementById("resultado").appendChild(contenedor);
+        
+        $("body").append( `<div id="resTotal">
+                                    <h3> Producto: ${prod.nomProd}</h3>
+                                    <p> Precio: $ ${prod.precio} Iva: % ${prod.iva}</p>
+                                    <b>Precio c/ iva: $ ${prod.precioTot}</b>
+                                    <hr>
+                                </div> `);    
+        
         console.log("Nombre producto: " +prod.nomProd+ " con iva: " + prod.iva + "% .Precio unitario: $" +prod.precio+ " precio total: $" + prod.precioTot);
         
     }
@@ -78,17 +72,36 @@ function totalProductos(){
          totalart+=pr.precioTot;
          console.log(pr.precioTot);               
     }
-    let total = document.createElement("h4")
-        total.innerHTML="Total: "+parseFloat(totalart);
-    document.getElementById("totRt").appendChild(total); 
+   
 }
-
+let total = document.createElement("h4")
+total.innerHTML="Total: "+parseFloat(totalart);
+document.getElementById("totRt").appendChild(total); 
 
 $('body').append('<button id="btnBorrar">Borrar</button>');
 $('#btnBorrar').on('click',function () {
+
+    $("#resTotal").fadeOut("slow");
     console.log("");
     
 });
+$('body').append('<button id="btnAgregar">Agregar</button>');
+$('#btnAgregar').on('click',function() {
+
+   calcularPrecio();
+   $("cantidad").val("");  
+   $("iva").val(""); 
+   $("precio").val("");  
+    
+});
+
+$('body').append('<button id="btnTotal">Total</button>');
+$('#btnTotal').on('click',function() {
+
+  totalProductos();
+  $("#resTotal").fadeIn("slow");  
+});
+
 
 
 console.log(localStorage.getItem("prodCompleto"));
