@@ -1,0 +1,7 @@
+[
+    {"id":1, "nomProd":"Pan", "cantidad":"1", "precio":"200,80","iva":"21"},
+    {"id":1, "nomProd":"Leche", "cantidad":"1", "precio":"120,80","iva":"21"},
+    {"id":1, "nomProd":"Dulce", "cantidad":"1", "precio":"220,80","iva":"21"},
+    {"id":1, "nomProd":"Pan", "cantidad":"1", "precio":"130,80","iva":"21"},
+    {"id":1, "nomProd":"Galleta", "cantidad":"1", "precio":"200,80","iva":"21"}
+]

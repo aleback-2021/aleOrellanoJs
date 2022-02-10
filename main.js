@@ -2,9 +2,27 @@ $(document).ready(function() {
     console.log("El DOM esta listo (jQuery)");
     let mensaje = "Curso de <strong>Javascript</strong>";
     $("#resultado").html(mensaje);
+    
  }); 
-
-
+ const URLJSON = "datos.json";
+ $(document).ready(function() { 
+    $.getJSON(URLJSON, function (respuesta, estado) {
+        
+        if (estado === "success"){
+            let misDatos = respuesta;
+            
+            for (const dato of misDatos) {
+                
+                $("body").prepend(`<div>
+                    
+                    <h3>${dato.nomProd}</h3>
+                    <p>$${dato.precio}</p>
+                    <p>Iva: % ${dato.iva}</p>
+                    </div>`);
+            }
+        }
+    });
+}); 
  
 console.dir(document);
 console.dir(document.head);
@@ -105,7 +123,3 @@ $('#btnTotal').on('click',function() {
 
 
 console.log(localStorage.getItem("prodCompleto"));
-
-
-
-//calcularPrecio();
